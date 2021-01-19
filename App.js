@@ -6,20 +6,65 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import TabHomeScreen from './src/home_tab';
 import TabUserScreen from './src/user_tab';
 import TabSearchScreen from './src/search_tab';
+import { Ionicons } from '@expo/vector-icons';
+import StackHomeScreen from './src/home';
 
+const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const TabBarIcon = (focused, name) => {
   let iconImagePath;
+  let iconName, iconSize;
+
+/*
+  Stack Navigator
+    - Tab Navigator
+      - Tab Screen D
+      - Tab Screen E
+      - Tab Screen F
+    - Stack Screen B
+    - Stack Screen C
+*/
+
+MainScreen = () => {
+  return (
+    <Tab.Navigator
+    initialRouteName="Home"
+    tabBarOptions={{
+      //activeBackgroundColor: 'skyblue',
+      activeTintColor: 'blue',
+      inactiveTintColor: '#fff',
+      style: {
+        backgroundColor: '#c6cbef'
+      }
+    }}
+    screenOptions={({route})=>({
+      tabBarLabel: route.name, 
+      tabBarIcon: ({focused}) =>(
+        TabBarIcon(focused, route.name)
+      )
+    })}
+    >
+    <Tab.Screen name ="Home" component={TabHomeScreen} />
+    <Tab.Screen name ="Search" component={TabSearchScreen} />
+    <Tab.Screen name ="User" component={TabUserScreen} />
+  </Tab.Navigator>
+  )
+}
+
 
   if (name === 'Home') {
+    //iconName = 'home-outline'
     iconImagePath = require('./assets/pics/home.png')
   } else if (name === 'Search') {
-    iconImagePath = require('./assets/pics/search.png')
+   iconImagePath = require('./assets/pics/search.png')
   } else if (name === 'User') {
-    iconImagePath = require('./assets/pics/user.png')
+   iconImagePath = require('./assets/pics/user.png')
   }
 
+    iconSize = focused ? 30 : 20
   return (
+    // <Ionicons name={iconName} size= {iconSize}
+    // />
     <Image 
       style={{
         width: focused ? 30: 20,
@@ -32,27 +77,10 @@ const TabBarIcon = (focused, name) => {
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator
-        initialRouteName="Home"
-        tabBarOptions={{
-          //activeBackgroundColor: 'skyblue',
-          activeTintColor: 'blue',
-          inactiveTintColor: '#fff',
-          style: {
-            backgroundColor: '#c6cbef'
-          }
-        }}
-        screenOptions={({route})=>({
-          tabBarLabel: route.name, 
-          tabBarIcon: ({focused}) =>(
-            TabBarIcon(focused, route.name)
-          )
-        })}
-        >
-        <Tab.Screen name ="Home" component={TabHomeScreen} />
-        <Tab.Screen name ="Search" component={TabSearchScreen} />
-        <Tab.Screen name ="User" component={TabUserScreen} />
-      </Tab.Navigator>
+      <Stack.Navigator>
+        <Stack.Screen name= "Main" component={MainScreen}/>
+        <Stack.Screen name= "Home_Stack" component={StackHomeScreen}/>
+      </Stack.Navigator>
     </NavigationContainer>
 
   );
