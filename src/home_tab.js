@@ -10,25 +10,32 @@ class TabHomeScreen extends Component {
 render () { 
     return (
     <ScrollView style={styles.container}>
-        <View style={styles.containerOne}>
           <Text style={styles.mainText}>오늘의 VoveL Mix</Text>
-          <ScrollView horizontal indicatorStyle={"white"}>
+          <ScrollView style={styles.containerOne} horizontal indicatorStyle={"white"}>
+            <TouchableOpacity><Image style={styles.mainImage} resizeMode={"stretch"} source={Icon}></Image></TouchableOpacity>
             <TouchableOpacity><Image style={styles.mainImage} resizeMode={"stretch"} source={Icon}></Image></TouchableOpacity>
             <TouchableOpacity><Image style={styles.mainImage} resizeMode={"stretch"} source={Icon}></Image></TouchableOpacity>
             <TouchableOpacity><Image style={styles.mainImage} resizeMode={"stretch"} source={Icon}></Image></TouchableOpacity>
             <TouchableOpacity><Image style={styles.mainImage} resizeMode={"stretch"} source={Icon}></Image></TouchableOpacity>
           </ScrollView>
-          
-          <StatusBar style="auto" />
-        </View>
-        <View style={styles.containerTwo}>
-          <Text style={styles.mainText}>오늘의 VoveL Mix</Text>
-          <TouchableOpacity>
-            <Image style={styles.mainImage} resizeMode={"stretch"} source={Icon}></Image>
-          </TouchableOpacity>
-          <Text>Open up App.js to start working on your app!</Text>
-          <StatusBar style="auto" />
-        </View>
+        
+          <Text style={styles.middleText}>오늘의 VoveL Mix</Text>
+          <ScrollView style={styles.containerTwo} horizontal indicatorStyle={"white"}>
+            <TouchableOpacity><Image style={styles.mainImage} resizeMode={"stretch"} source={Icon}></Image></TouchableOpacity>
+            <TouchableOpacity><Image style={styles.mainImage} resizeMode={"stretch"} source={Icon}></Image></TouchableOpacity>
+            <TouchableOpacity><Image style={styles.mainImage} resizeMode={"stretch"} source={Icon}></Image></TouchableOpacity>
+            <TouchableOpacity><Image style={styles.mainImage} resizeMode={"stretch"} source={Icon}></Image></TouchableOpacity>
+            <TouchableOpacity><Image style={styles.mainImage} resizeMode={"stretch"} source={Icon}></Image></TouchableOpacity>
+          </ScrollView>
+
+          <Text style={styles.middleText}>오늘의 VoveL Mix</Text>
+          <ScrollView style={styles.containerTwo} horizontal indicatorStyle={"white"}>
+            <TouchableOpacity><Image style={styles.mainImage} resizeMode={"stretch"} source={Icon}></Image></TouchableOpacity>
+            <TouchableOpacity><Image style={styles.mainImage} resizeMode={"stretch"} source={Icon}></Image></TouchableOpacity>
+            <TouchableOpacity><Image style={styles.mainImage} resizeMode={"stretch"} source={Icon}></Image></TouchableOpacity>
+            <TouchableOpacity><Image style={styles.mainImage} resizeMode={"stretch"} source={Icon}></Image></TouchableOpacity>
+            <TouchableOpacity><Image style={styles.mainImage} resizeMode={"stretch"} source={Icon}></Image></TouchableOpacity>
+          </ScrollView>
     </ScrollView>
     )}
     }
@@ -45,16 +52,29 @@ render () {
         marginTop: 40,
         marginLeft: 40
       },
+      containerTwo: {
+          marginTop:20,
+          marginLeft: 40
+      },
       mainText: {
         color: "#fff",
-        fontSize: 20,
-        marginBottom: 10
+        fontSize: 30,
+        fontWeight: "700",
+        marginTop: 100,
+        marginLeft: 40
+      },
+      middleText: {
+        color: "#fff",
+        fontSize: 30,
+        fontWeight: "700",
+        marginTop: 60,
+        marginLeft: 40
       },
       mainImage: {
-        width: 80,
-        height: 80,
+        width: 150,
+        height: 150,
         marginBottom: 10,
-        marginRight: 20
+        marginRight: 10
       },
       containerTwo: {
         flex: 1,
