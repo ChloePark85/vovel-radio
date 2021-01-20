@@ -3,11 +3,12 @@ import React from 'react';
 import { StyleSheet, Text, ScrollView, View, Image} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native' ;  
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack'
 import TabHomeScreen from './src/home_tab';
 import TabUserScreen from './src/user_tab';
 import TabSearchScreen from './src/search_tab';
 import { Ionicons } from '@expo/vector-icons';
-import StackHomeScreen from './src/home';
+//import StackHomeScreen from './src/home';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -24,32 +25,6 @@ const TabBarIcon = (focused, name) => {
     - Stack Screen B
     - Stack Screen C
 */
-
-MainScreen = () => {
-  return (
-    <Tab.Navigator
-    initialRouteName="Home"
-    tabBarOptions={{
-      //activeBackgroundColor: 'skyblue',
-      activeTintColor: 'blue',
-      inactiveTintColor: '#fff',
-      style: {
-        backgroundColor: '#c6cbef'
-      }
-    }}
-    screenOptions={({route})=>({
-      tabBarLabel: route.name, 
-      tabBarIcon: ({focused}) =>(
-        TabBarIcon(focused, route.name)
-      )
-    })}
-    >
-    <Tab.Screen name ="Home" component={TabHomeScreen} />
-    <Tab.Screen name ="Search" component={TabSearchScreen} />
-    <Tab.Screen name ="User" component={TabUserScreen} />
-  </Tab.Navigator>
-  )
-}
 
 
   if (name === 'Home') {
@@ -77,10 +52,27 @@ MainScreen = () => {
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name= "Main" component={MainScreen}/>
-        <Stack.Screen name= "Home_Stack" component={StackHomeScreen}/>
-      </Stack.Navigator>
+    <Tab.Navigator
+    initialRouteName="Home"
+    tabBarOptions={{
+      //activeBackgroundColor: 'skyblue',
+      activeTintColor: 'blue',
+      inactiveTintColor: '#fff',
+      style: {
+        backgroundColor: '#c6cbef'
+      }
+    }}
+    screenOptions={({route})=>({
+      tabBarLabel: route.name, 
+      tabBarIcon: ({focused}) =>(
+        TabBarIcon(focused, route.name)
+      )
+    })}
+    >
+    <Tab.Screen name ="Home" component={TabHomeScreen} />
+    <Tab.Screen name ="Search" component={TabSearchScreen} />
+    <Tab.Screen name ="User" component={TabUserScreen} />
+  </Tab.Navigator>
     </NavigationContainer>
 
   );

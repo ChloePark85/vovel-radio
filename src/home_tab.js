@@ -12,10 +12,13 @@ render () {
     <ScrollView style={styles.container}>
         <View style={styles.containerOne}>
           <Text style={styles.mainText}>오늘의 VoveL Mix</Text>
-          <TouchableOpacity>
-            <Image style={styles.mainImage} resizeMode={"stretch"} source={Icon}></Image>
-          </TouchableOpacity>
-          <Text>Open up App.js to start working on your app!</Text>
+          <ScrollView horizontal indicatorStyle={"white"}>
+            <TouchableOpacity><Image style={styles.mainImage} resizeMode={"stretch"} source={Icon}></Image></TouchableOpacity>
+            <TouchableOpacity><Image style={styles.mainImage} resizeMode={"stretch"} source={Icon}></Image></TouchableOpacity>
+            <TouchableOpacity><Image style={styles.mainImage} resizeMode={"stretch"} source={Icon}></Image></TouchableOpacity>
+            <TouchableOpacity><Image style={styles.mainImage} resizeMode={"stretch"} source={Icon}></Image></TouchableOpacity>
+          </ScrollView>
+          
           <StatusBar style="auto" />
         </View>
         <View style={styles.containerTwo}>
@@ -50,7 +53,8 @@ render () {
       mainImage: {
         width: 80,
         height: 80,
-        marginBottom: 10
+        marginBottom: 10,
+        marginRight: 20
       },
       containerTwo: {
         flex: 1,
